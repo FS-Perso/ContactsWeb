@@ -1,4 +1,27 @@
-<div>
-  <p>{{contact.name}}</p>
-  <p>{{contact.email}}</p>
+<div class="container">
+  <div class="card">
+    <div class="card-header"><strong>Contacts</strong></div>
+    <div class="card-body overflow:auto">
+      <table class="table table-striped">
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>DateNaissance</th>
+          <th>Email</th>
+          <th>Tel</th>
+          <th>Photo</th>
+        </tr>
+        <tr *ngFor="let c of pageContacts">
+          <td>{{c.id}}</td>
+          <td>{{c.nom}}</td>
+          <td>{{c.prenom}}</td>
+          <td>{{c.dateNaissance}}</td>
+          <td>{{c.email}}</td>
+          <td>{{c.tel}}</td>
+          <td>{{c.photo}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
