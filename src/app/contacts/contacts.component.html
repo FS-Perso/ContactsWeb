@@ -12,7 +12,7 @@
           <th>Tel</th>
           <th>Photo</th>
         </tr>
-        <tr *ngFor="let c of pageContacts">
+        <tr *ngFor="let c of pageContacts?.content">
           <td>{{c.id}}</td>
           <td>{{c.nom}}</td>
           <td>{{c.prenom}}</td>

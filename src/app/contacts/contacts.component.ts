@@ -15,7 +15,7 @@ export class ContactsComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get("http://localhost:8080/contacts")
+    this.http.get("http://localhost:8080/findContacts?mc=a&size=2&page=0")
       .pipe(map(resp => resp))
       .subscribe(data => {
         this.pageContacts = data;
