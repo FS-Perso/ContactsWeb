@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from "rxjs/operators";
+import { ContactsService } from './../services/contacts.service';
 
 @Component({
   selector: 'app-contacts',
@@ -12,11 +13,10 @@ export class ContactsComponent implements OnInit {
 
   pageContacts: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public contactService: ContactsService) { }
 
   ngOnInit() {
-    this.http.get("http://localhost:8080/findContacts?mc=a&size=2&page=0")
-      .pipe(map(resp => resp))
+    this.contactService.getContacts()
       .subscribe(data => {
         this.pageContacts = data;
       }, err => {
