@@ -7,8 +7,13 @@ export class ContactsService {
 
   constructor(public http: HttpClient) { }
 
-  getContacts() {
-    return this.http.get("http://localhost:8080/findContacts?mc=a&size=2&page=0")
+  getContacts(motCle: string, page: number, size: number) {
+    return this.http.get("http://localhost:8080/findContacts?mc=" + motCle + "&size=" + size + "&page=" + page)
+      .pipe(map(resp => resp));
+  }
+
+  getAllContacts() {
+    return this.http.get("http://localhost:8080/contacts")
       .pipe(map(resp => resp));
   }
 

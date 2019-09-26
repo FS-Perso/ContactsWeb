@@ -12,16 +12,35 @@ import { ContactsService } from './../services/contacts.service';
 export class ContactsComponent implements OnInit {
 
   pageContacts: any;
+  motCle: string = "";
+  page: number = 0;
+  size: number = 5;
 
   constructor(private http: HttpClient, public contactService: ContactsService) { }
 
   ngOnInit() {
-    this.contactService.getContacts()
+    console.log("+++++++++ ngOnInit ++++++++++++")
+    this.contactService.getAllContacts()
+      .subscribe(data => {
+        this.pageContacts = data;
+        console.log(data);
+      }, err => {
+        console.log(err);
+      })
+  }
+
+  doSearch() {
+    this.contactService.getContacts(this.motCle, this.page, this.size)
       .subscribe(data => {
         this.pageContacts = data;
       }, err => {
         console.log(err);
       })
+  }
+
+  chercher() {
+    console.log("****** chercher *******");
+    this.doSearch();
   }
 
 }

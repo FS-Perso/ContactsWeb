@@ -2,6 +2,11 @@
   <div class="card">
     <div class="card-header"><strong>Contacts</strong></div>
     <div class="card-body overflow:auto">
+      <div class="form-group">
+        <label>Mot clé: </label>
+        <input type="text" [(ngModel)]="motCle" class="form-control">
+        <button class="btn btn-primary spacer" (click)="chercher()">Chercher</button>
+      </div>
       <table class="table table-striped">
         <tr>
           <th>ID</th>
@@ -12,7 +17,7 @@
           <th>Tel</th>
           <th>Photo</th>
         </tr>
-        <tr *ngFor="let c of pageContacts?.content">
+        <tr *ngFor="let c of (pageContacts?(pageContacts.content?pageContacts.content:pageContacts):pageContacts)">
           <td>{{c.id}}</td>
           <td>{{c.nom}}</td>
           <td>{{c.prenom}}</td>
