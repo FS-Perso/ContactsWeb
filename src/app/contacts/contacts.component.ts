@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from "rxjs/operators";
-import { ContactsService } from './../services/contacts.service';
+import { ContactsService } from './../../services/contacts.service';
 
 @Component({
   selector: 'app-contacts',

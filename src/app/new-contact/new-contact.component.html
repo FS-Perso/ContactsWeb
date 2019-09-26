@@ -1,0 +1,66 @@
+<div class="container">
+
+  <div class="card" *ngIf="mode==1">
+    <div class="card-header"><strong>New Contact</strong></div>
+    <div class="card-body container">
+      <div class="form-group">
+
+        <label class="control-label">Nom: </label>
+        <input type="text" [(ngModel)]="contact.nom" class="form-control">
+
+        <label class="control-label">Prenom: </label>
+        <input type="text" [(ngModel)]="contact.prenom" class="form-control">
+
+        <label class="control-label">Date de Naissance: </label>
+        <input type="date" [(ngModel)]="contact.dateNaissance" class="form-control">
+
+        <label class="control-label">Email: </label>
+        <input type="text" [(ngModel)]="contact.email" class="form-control">
+
+        <label class="control-label">N° Téléphone: </label>
+        <input type="text" [(ngModel)]="contact.tel" class="form-control">
+
+        <button class="btn btn-secondary spacer" (click)="saveContact()">Valider</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" *ngIf="mode==2">
+    <div class="card-header"><strong>Contact Confirmation</strong></div>
+    <div class="card-body container">
+
+      <div class="form-group">
+        <label class="control-label">Id: </label>
+        <label class="control-label">{{contact.id}}</label>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label">Nom: </label>
+        <label>{{contact.nom}}</label>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label">Prenom: </label>
+        <label>{{contact.prenom}}</label>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label">Date de Naissance: </label>
+        <label>{{contact.dateNaissance}}</label>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label">Email: </label>
+        <label>{{contact.email}}</label>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label">N° Téléphone: </label>
+        <label>{{contact.tel}}</label>
+      </div>
+
+      <button class="btn btn-secondary spacer" (click)="mode=1">Nouveau Contact</button>
+
+    </div>
+  </div>
+</div>
