@@ -1,32 +1,43 @@
 <div class="container">
   <div class="card">
     <div class="card-header"><strong>Contacts</strong></div>
-    <div class="card-body overflow:auto">
+    <div class="card-body container">
       <div class="form-group">
         <label>Mot clé: </label>
         <input type="text" [(ngModel)]="motCle" class="form-control">
         <button class="btn btn-primary spacer" (click)="chercher()">Chercher</button>
       </div>
       <table class="table table-striped">
-        <tr>
-          <th>ID</th>
-          <th>Nom</th>
-          <th>Prénom</th>
-          <th>DateNaissance</th>
-          <th>Email</th>
-          <th>Tel</th>
-          <th>Photo</th>
-        </tr>
-        <tr *ngFor="let c of (pageContacts?(pageContacts.content?pageContacts.content:pageContacts):pageContacts)">
-          <td>{{c.id}}</td>
-          <td>{{c.nom}}</td>
-          <td>{{c.prenom}}</td>
-          <td>{{c.dateNaissance}}</td>
-          <td>{{c.email}}</td>
-          <td>{{c.tel}}</td>
-          <td>{{c.photo}}</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>DateNaissance</th>
+            <th>Email</th>
+            <th>Tel</th>
+            <th>Photo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of (pageContacts ? (pageContacts.content ? pageContacts.content : pageContacts) :  pageContacts)">
+            <td>{{c.id}}</td>
+            <td>{{c.nom}}</td>
+            <td>{{c.prenom}}</td>
+            <td>{{c.dateNaissance}}</td>
+            <td>{{c.email}}</td>
+            <td>{{c.tel}}</td>
+            <td>{{c.photo}}</td>
+          </tr>
+        </tbody>
       </table>
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <ul class="navbar-nav">
+          <li class="nav-item cursor-pointer" [ngClass]="{'active':currentPage==(i)}" *ngFor="let p of pages; let i=index">
+            <a class="nav-link" (click)="goToPage(i)">{{i+1}} </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </div>
