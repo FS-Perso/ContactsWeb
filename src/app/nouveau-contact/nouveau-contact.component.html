@@ -1,0 +1,118 @@
+<div class="container spacer">
+
+
+
+  <form #f="ngForm" *ngIf="mode==1" (ngSubmit)="onSaveContact(f.value)" class="was-validated" novalidate>
+
+    <div class="card">
+      <div class="card-header"><strong>New Contact</strong></div>
+      <div class="card-body container">
+
+        <div class="form-group">
+          <label class="control-label"><strong>Nom: </strong></label>
+          <input type="text" ngModel name="nom" required minlength="4" placeholder="Enter your Last Name" #nom="ngModel" class="form-control form-control-sm mb-2 mr-sm-2">
+          <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="alert alert-danger">
+            <div *ngIf="nom.errors.required">
+              Name is required.
+            </div>
+            <div *ngIf="nom.errors.minlength">
+              Name must be at least 4 characters long.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label"><strong>Prenom: </strong></label>
+          <input type="text" ngModel name="prenom" required minlength="4" placeholder="Enter your First Name" #prnom="ngModel" class="form-control form-control-sm mb-2 mr-sm-2">
+          <div *ngIf="prnom.invalid && (prnom.dirty || prnom.touched)" class="alert alert-danger">
+            <div *ngIf="prnom.errors.required">
+              Name is required.
+            </div>
+            <div *ngIf="prnom.errors.minlength">
+              Name must be at least 4 characters long.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label"><strong>Date de Naissance: </strong></label>
+          <input type="date" ngModel name="dateNaissance" required #bd="ngModel" class="form-control form-control-sm mb-2 mr-sm-2">
+          <div *ngIf="bd.invalid && (bd.dirty || bd.touched)" class="alert alert-danger">
+            <div *ngIf="bd.errors.required">
+              Name is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label"><strong>Email: </strong></label>
+          <input type="email" ngModel name="email" required email placeholder="Enter your Email" #email="ngModel" class="form-control form-control-sm mb-2 mr-sm-2">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+            <div *ngIf="email.errors.required">
+              Name is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label"><strong>N° Téléphone: </strong></label>
+          <input type="number" ngModel name="tel" required maxlength="13" placeholder="Enter your Phone Number" #tel="ngModel" class="form-control form-control-sm mb-2 mr-sm-2">
+          <div *ngIf="tel.invalid && (tel.dirty || tel.touched)" class="alert alert-danger">
+            <div *ngIf="tel.errors.required">
+              Name is required.
+            </div>
+            <div *ngIf="tel.errors.maxlength">
+              Name must be at least 4 characters long.
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="form-group">
+          <label class="control-label"><strong>Photo: </strong></label>
+          <input type="file" ngModel name="photo" placeholder="Choose your Picture" class="form-control-file border">
+        </div> -->
+      </div>
+
+      <div class="card-footer"><button [disabled]="!f.valid" class="btn btn-primary" type="submit">Save</button></div>
+
+    </div>
+  </form>
+
+  <div class="card" *ngIf="mode==2">
+    <div class="card-header"><strong>Contact Added Successfully</strong></div>
+    <div class="card-body container">
+      <table>
+        <!-- <tr>
+          <td><img src="{{contact.photo}}" class="rounded-circle" alt="Cinque Terre"></td>
+        </tr> -->
+        <tr>
+          <td><label class="control-label"><strong>ID: </strong></label></td>
+          <td><label class="control-label">{{contact.id}}</label></td>
+        </tr>
+        <tr>
+          <td><label class="control-label"><strong>Nom: </strong></label></td>
+          <td><label class="control-label">{{contact.nom}}</label></td>
+        </tr>
+        <tr>
+          <td><label class="control-label"><strong>Prenom: </strong></label></td>
+          <td><label class="control-label">{{contact.prenom}}</label></td>
+        </tr>
+        <tr>
+          <td><label class="control-label"><strong>Date de Naissance: </strong></label></td>
+          <td><label class="control-label">{{contact.dateNaissance}}</label></td>
+        </tr>
+        <tr>
+          <td><label class="control-label"><strong>Email: </strong></label></td>
+          <td><label class="control-label">{{contact.email}}</label></td>
+        </tr>
+        <tr>
+          <td><label class="control-label"><strong>N° Téléphone: </strong></label></td>
+          <td><label class="control-label">{{contact.tel}}</label></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="card-footer"><button class="btn btn-primary" type="button" (click)="mode=1">New Contact</button></div>
+
+  </div>
+</div>
