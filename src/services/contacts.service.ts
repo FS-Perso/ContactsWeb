@@ -18,8 +18,9 @@ export class ContactsService {
       .pipe(map(resp => resp));
   }
 
-  saveContact(contact: Contact) {
-    return this.http.post("http://localhost:8080/contacts",contact)
+  saveContact(contact: any) {
+    contact.photo = "assets/img/" + contact.photo.substring(12);
+    return this.http.post("http://localhost:8080/contacts", contact)
       .pipe(map(resp => resp));
   }
 

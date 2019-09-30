@@ -67,10 +67,10 @@
           </div>
         </div>
 
-        <!-- <div class="form-group">
+        <div class="form-group">
           <label class="control-label"><strong>Photo: </strong></label>
-          <input type="file" ngModel name="photo" placeholder="Choose your Picture" class="form-control-file border">
-        </div> -->
+          <input type="file" ngModel name="photo" (change)="showPreviewImage($event)">
+        </div>
       </div>
 
       <div class="card-footer"><button [disabled]="!f.valid" class="btn btn-primary" type="submit">Save</button></div>
@@ -82,9 +82,9 @@
     <div class="card-header"><strong>Contact Added Successfully</strong></div>
     <div class="card-body container">
       <table>
-        <!-- <tr>
-          <td><img src="{{contact.photo}}" class="rounded-circle" alt="Cinque Terre"></td>
-        </tr> -->
+        <tr>
+          <td><img src="{{contact.photo}}" class="rounded-circle" width="100" height="100"></td>
+        </tr>
         <tr>
           <td><label class="control-label"><strong>ID: </strong></label></td>
           <td><label class="control-label">{{contact.id}}</label></td>

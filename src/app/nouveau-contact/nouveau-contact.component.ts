@@ -11,21 +11,33 @@ export class NouveauContactComponent implements OnInit {
 
   mode: number = 1;
   contact: Contact = new Contact();
+  photo: string;
+  ph: string;
 
   constructor(public contactService: ContactsService) { }
 
   ngOnInit() {
   }
 
+  showPreviewImage(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.photo = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
   onSaveContact(dataForm) {
     this.contactService.saveContact(dataForm)
       .subscribe((data: any) => {
-        console.log(data);
         this.contact = data;
+        console.log(this.contact);
         this.mode = 2;
       }, err => {
         console.log(JSON.parse(err.body).message);
       })
   }
-  
+
 }
