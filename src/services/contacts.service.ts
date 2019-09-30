@@ -13,6 +13,11 @@ export class ContactsService {
       .pipe(map(resp => resp));
   }
 
+  getContact(id: number) {
+    return this.http.get("http://localhost:8080/contacts/"+id)
+      .pipe(map(resp => resp));
+  }
+
   getAllContacts() {
     return this.http.get("http://localhost:8080/contacts")
       .pipe(map(resp => resp));
@@ -24,4 +29,8 @@ export class ContactsService {
       .pipe(map(resp => resp));
   }
 
+  updateContact(contact: any) {
+    return this.http.put("http://localhost:8080/contacts/"+contact.id, contact)
+      .pipe(map(resp => resp));
+  }
 }

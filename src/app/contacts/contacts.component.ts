@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from "rxjs/operators";
 import { ContactsService } from './../../services/contacts.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contacts',
@@ -18,7 +19,7 @@ export class ContactsComponent implements OnInit {
 
   pages: Array<number>;
 
-  constructor(private http: HttpClient, public contactService: ContactsService) { }
+  constructor(private http: HttpClient, public contactService: ContactsService, public router: Router) { }
 
   ngOnInit() {
     console.log("+++++++++ ngOnInit ++++++++++++")
@@ -49,6 +50,10 @@ export class ContactsComponent implements OnInit {
   goToPage(i: number) {
     this.currentPage = i;
     this.doSearch();
+  }
+
+  onEditContact(id: number) {
+    this.router.navigate(['/editContact', id]);
   }
 
 }

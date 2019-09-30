@@ -10,24 +10,25 @@
       <table class="table table-striped">
         <thead>
           <tr>
+            <th>Photo</th>
             <th>ID</th>
             <th>Nom</th>
             <th>Prénom</th>
             <th>DateNaissance</th>
             <th>Email</th>
             <th>Tel</th>
-            <th>Photo</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let c of (pageContacts ? (pageContacts.content ? pageContacts.content : pageContacts) :  pageContacts)">
+            <td><img src="{{c.photo}}" class="rounded-circle" width="50" height="50"></td>
             <td>{{c.id}}</td>
             <td>{{c.nom}}</td>
             <td>{{c.prenom}}</td>
             <td>{{c.dateNaissance}}</td>
             <td>{{c.email}}</td>
             <td>{{c.tel}}</td>
-            <td>{{c.photo}}</td>
+            <td><a (click)="onEditContact(c.id)" class="clickable cursor-pointer">Edit</a></td>
           </tr>
         </tbody>
       </table>

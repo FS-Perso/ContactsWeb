@@ -1,0 +1,74 @@
+<div class="container spacer">
+
+  <div *ngIf="mode==1" class="card">
+    <div class="card-header"><strong>New Contact</strong></div>
+    <div class="card-body container">
+
+      <div class="form-group">
+        <label class="control-label"><strong>Nom: </strong></label>
+        <input type="text" [(ngModel)]="contact.nom" required minlength="4" class="form-control form-control-sm mb-2 mr-sm-2">
+      </div>
+
+      <div class="form-group">
+        <label class="control-label"><strong>Prenom: </strong></label>
+        <input type="text" [(ngModel)]="contact.prenom" required minlength="4" class="form-control form-control-sm mb-2 mr-sm-2">
+      </div>
+
+      <div class="form-group">
+        <label class="control-label"><strong>Date de Naissance: </strong></label>
+        <input type="date" [(ngModel)]="contact.dateNaissance" required class="form-control form-control-sm mb-2 mr-sm-2">
+      </div>
+
+      <div class="form-group">
+        <label class="control-label"><strong>Email: </strong></label>
+        <input type="email" [(ngModel)]="contact.email" required email class="form-control form-control-sm mb-2 mr-sm-2">
+      </div>
+
+      <div class="form-group">
+        <label class="control-label"><strong>N° Téléphone: </strong></label>
+        <input type="number" [(ngModel)]="contact.tel" required maxlength="13" class="form-control form-control-sm mb-2 mr-sm-2">
+      </div>
+    </div>
+
+    <div class="card-footer"><button class="btn btn-primary" (click)="onUpdateContact(contact.id)">Save</button></div>
+
+  </div>
+
+  <div class="card" *ngIf="mode==2">
+    <div class="card-header"><strong>Contact Added Successfully</strong></div>
+    <div class="card-body container">
+      <table>
+        <tr>
+          <td><img src="{{contact.photo}}" class="rounded-circle" width="100" height="100"></td>
+        </tr>
+        <tr>
+          <td><label class="control-label"><strong>ID: </strong></label></td>
+          <td><label class="control-label">{{contact.id}}</label></td>
+        </tr>
+        <tr>
+          <td><label class="control-label"><strong>Nom: </strong></label></td>
+          <td><label class="control-label">{{contact.nom}}</label></td>
+        </tr>
+        <tr>
+          <td><label class="control-label"><strong>Prenom: </strong></label></td>
+          <td><label class="control-label">{{contact.prenom}}</label></td>
+        </tr>
+        <tr>
+          <td><label class="control-label"><strong>Date de Naissance: </strong></label></td>
+          <td><label class="control-label">{{contact.dateNaissance}}</label></td>
+        </tr>
+        <tr>
+          <td><label class="control-label"><strong>Email: </strong></label></td>
+          <td><label class="control-label">{{contact.email}}</label></td>
+        </tr>
+        <tr>
+          <td><label class="control-label"><strong>N° Téléphone: </strong></label></td>
+          <td><label class="control-label">{{contact.tel}}</label></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="card-footer"><button class="btn btn-primary" type="button" (click)="mode=1">New Contact</button></div>
+
+  </div>
+</div>
