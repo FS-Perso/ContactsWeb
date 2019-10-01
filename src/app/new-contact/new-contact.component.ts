@@ -22,7 +22,6 @@ export class NewContactComponent implements OnInit {
   saveContact() {
     this.contactService.saveContact(this.contact)
       .subscribe((data: any) => {
-        console.log(data);
         this.contact.id = data.id;
         this.mode = 2;
       }, err => {

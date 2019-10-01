@@ -14,7 +14,7 @@ export class ContactsService {
   }
 
   getContact(id: number) {
-    return this.http.get("http://localhost:8080/contacts/"+id)
+    return this.http.get("http://localhost:8080/contacts/" + id)
       .pipe(map(resp => resp));
   }
 
@@ -30,7 +30,12 @@ export class ContactsService {
   }
 
   updateContact(contact: any) {
-    return this.http.put("http://localhost:8080/contacts/"+contact.id, contact)
+    return this.http.put("http://localhost:8080/contacts/" + contact.id, contact)
+      .pipe(map(resp => resp));
+  }
+
+  deleteContact(id: number) {
+    return this.http.delete("http://localhost:8080/contacts/" + id)
       .pipe(map(resp => resp));
   }
 }

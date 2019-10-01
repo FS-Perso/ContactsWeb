@@ -7,7 +7,7 @@
         <input type="text" [(ngModel)]="motCle" class="form-control">
         <button class="btn btn-primary spacer" (click)="chercher()">Chercher</button>
       </div>
-      <table class="table table-striped">
+      <table style="width:100%;overflow:scroll;max-height:500px" class="table table-striped table-responsive">
         <thead>
           <tr>
             <th>Photo</th>
@@ -17,21 +17,42 @@
             <th>DateNaissance</th>
             <th>Email</th>
             <th>Tel</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
-        <tbody>
-          <tr *ngFor="let c of (pageContacts ? (pageContacts.content ? pageContacts.content : pageContacts) :  pageContacts)">
+        <tbody style="width:100%">
+          <tr style="width:100%" *ngFor="let c of (pageContacts ? (pageContacts.content ? pageContacts.content : pageContacts) :  pageContacts)">
             <td><img src="{{c.photo}}" class="rounded-circle" width="50" height="50"></td>
-            <td>{{c.id}}</td>
-            <td>{{c.nom}}</td>
-            <td>{{c.prenom}}</td>
-            <td>{{c.dateNaissance}}</td>
-            <td>{{c.email}}</td>
-            <td>{{c.tel}}</td>
-            <td><a (click)="onEditContact(c.id)" class="clickable cursor-pointer">Edit</a></td>
+            <td>
+              <div style="word-wrap: break-word;max-width: 30px">{{c.id}}</div>
+            </td>
+            <td>
+              <div style="word-wrap: break-word;max-width: 150px">{{c.nom}}</div>
+            </td>
+            <td>
+              <div style="word-wrap: break-word;max-width: 150px">{{c.prenom}}</div>
+            </td>
+            <td>
+              <div style="word-wrap: break-word;max-width: 100px">{{c.dateNaissance}}</div>
+            </td>
+            <td>
+              <div style="word-wrap: break-word;max-width: 200px">{{c.email}}</div>
+            </td>
+            <td>
+              <div style="word-wrap: break-word;max-width: 200px">{{c.tel}}</div>
+            </td>
+            <td>
+              <div style="word-wrap: break-word;"><a (click)="onEditContact(c.id)" class="clickable cursor-pointer"><img src="assets/img/edit-png.png" width="36" height="36"></a></div>
+            </td>
+            <td>
+              <div style="word-wrap: break-word;"><a (click)="onDeleteContact(c)" class="clickable cursor-pointer"><img src="assets/img/delete-icon.jpg" width="26" height="26"></a></div>
+            </td>
           </tr>
         </tbody>
       </table>
+    </div>
+    <div *ngIf="pageContacts.content!=null" class="card-footer">
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <ul class="navbar-nav">
           <li class="nav-item cursor-pointer" [ngClass]="{'active':currentPage==(i)}" *ngFor="let p of pages; let i=index">

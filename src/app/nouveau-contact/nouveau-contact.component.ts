@@ -33,7 +33,6 @@ export class NouveauContactComponent implements OnInit {
     this.contactService.saveContact(dataForm)
       .subscribe((data: any) => {
         this.contact = data;
-        console.log(this.contact);
         this.mode = 2;
       }, err => {
         console.log(JSON.parse(err.body).message);

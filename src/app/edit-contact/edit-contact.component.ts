@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Contact } from './../../model/model.contact';
 import { ContactsService } from './../../services/contacts.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-contact',
@@ -14,10 +14,7 @@ export class EditContactComponent implements OnInit {
   contact: Contact = new Contact();
   idContact: number;
 
-  constructor(public contactService: ContactsService, public activatedRoute: ActivatedRoute) {
-    console.log("+++++++++++++++++++++++");
-    console.log(this.activatedRoute.snapshot.params['id']);
-    console.log("+++++++++++++++++++++++");
+  constructor(public contactService: ContactsService, public activatedRoute: ActivatedRoute, public router: Router) {
     this.idContact = this.activatedRoute.snapshot.params['id'];
   }
 
@@ -25,7 +22,6 @@ export class EditContactComponent implements OnInit {
     this.contactService.getContact(this.idContact)
       .subscribe((data: any) => {
         this.contact = data;
-        console.log(this.contact);
       }, err => {
         console.log(JSON.parse(err.body).message);
       })
@@ -39,6 +35,10 @@ export class EditContactComponent implements OnInit {
       }, err => {
         console.log(JSON.parse(err.body).message);
       })
+  }
+
+  onGoToContacts() {
+    this.router.navigate(['/contacts']);
   }
 
 }
